@@ -2,26 +2,32 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// Create Counter component with button that's set to 0
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Counter />
       </div>
     );
+  }
+}
+
+class Counter extends Component {
+  state = {
+    count: 0
+  };
+  handleClick = () => {
+    // Sets the intital state within Counter: {this.state.count}
+    // Add event handler so that whenever the button is clicked the count increases by 1
+    this.setState(({ count }) => ({
+      count: count + 1
+    }));
+  };
+  render() {
+    // Update state whenever the button is clicked
+    // handleClick only works when the button is clicked
+    return <button onClick={this.handleClick} > {this.state.count}</button>;
   }
 }
 
